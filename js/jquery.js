@@ -16,7 +16,6 @@ function crearSpan(elemento , mensaje)
         }
     }
 }
-
 //FUNCION GENERAL PARA VALIDAR EL FORMULARIO
 function validateForm()
 {
@@ -29,22 +28,26 @@ function validateForm()
     
     //VALIDACION DEL NOMBRE
     if (nombre.val()==""){
-        crearSpan( nombre , "Escriba su nombre .");
+        crearSpan( nombre , "Ingrese su nombre.");
     }else{
        $("span").remove();
     }
     
     //VALIDACION DEL APELLIDO
     if(apellido.val()==""){
-        crearSpan(apellido , "Escriba su apellido.");
+        crearSpan(apellido , "Ingrese su apellido.");
     }else{
         $("span").remove();
     }
     //VALIDACION DE CORREO
+    var expresion=/^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
     if(correo.val()==""){
-        crearSpan(correo , "Verefique su correo.");
+        crearSpan(correo , "Ingres su correo.");
+    }else if (!expresion.test(correo)){
+        $("span").remove();
+        crearSpan(correo , "verifique su correo.");
     }else{
-        $("span").remove(); 
+        $("span").remove();
     }
     
     //VALIDACION DE LA CONTRASEÑA
